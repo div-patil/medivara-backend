@@ -16,5 +16,6 @@ router.get("/get", (req, res) => {
 router.post("/register", register);
 
 router.post("/login", login);
+
 router.post("/contact-us",contact);
 export default router;

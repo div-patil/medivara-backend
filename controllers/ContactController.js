@@ -1,26 +1,36 @@
-const {sendContactEmail} = require("../utils/mailer") 
-exports.contact= async (req,res) =>{
-    try{
-      const {name,email,message} = req.body;
-      if(!name || !email || !message)
-      {
-        console.log("name, email and message are missing")
-      }
-      if(sendContactEmail)
-      {
-        await sendContactEmail({
-            name : name,
-            email:email,
-            message:message
-        })
-      }
-      res.status(200).json()
+const { sendContactEmail } = require("../utils/mailer");
 
+exports.contact = async (req, res) => {
+  try {
+    const { name, email, message } = req.body;
+
+    // ✅ Validation
+    if (!name || !email || !message) {
+      return res.status(400).json({
+        success: false,
+        message: "Name, email, and message are required",
+      });
     }
-    catch(err)
-    {
-       new Error("Error Contact");
-        
-    }
-      
-}
+
+    // ✅ Send email
+    await sendContactEmail({
+      name,
+      email,
+      message,
+    });
+
+    // ✅ Proper success response
+    return res.status(200).json({
+      success: true,
+      message: "Contact message sent successfully",
+    });
+
+  } catch (error) {
+    console.error("Contact API Error:", error);
+
+    return res.status(500).json({
+      success: false,
+      message: "Failed to send contact message",
+    });
+  }
+};
