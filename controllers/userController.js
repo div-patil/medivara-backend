@@ -4,16 +4,19 @@ import jwt from "jsonwebtoken";
 
 export const register = async (req, res) => {
   try {
-    
+    console.log("Register API called:", req.body);
+
     const { name, email, password } = req.body;
-    
     const hash = await bcrypt.hash(password, 10);
+
     const user = await User.create({ name, email, password: hash });
     res.status(201).json(user);
   } catch (err) {
+    console.error("Register error:", err);
     res.status(400).json({ error: err.message });
   }
 };
+
 
 export const login = async (req, res) => {
   try {
