@@ -11,6 +11,7 @@ import reviewRoutes from "./routes/reviewRoutes.js";
 // import appointmentRoutes from "./routes/appointmentRoutes.js";
 import appointmentRoutes from "./routes/appointmentRoutes.js";
 import doctorRoutes from "./routes/doctorRoutes.js";
+import contactRoutes from "./routes/contactRoutes.js";
 
 dotenv.config();
 connectDB();
@@ -22,6 +23,7 @@ app.use("/uploads", express.static("uploads"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.use("/api/contact", contactRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/reviews", reviewRoutes);
 app.use("/api/appointments", appointmentRoutes);
