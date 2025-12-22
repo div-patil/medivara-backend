@@ -1,6 +1,6 @@
 const { sendContactEmail } = require("../utils/mailer");
 
-exports.contact = async (req, res) => {
+export const contact = async (req, res) => {
   try {
     const { name, email, message } = req.body;
 
