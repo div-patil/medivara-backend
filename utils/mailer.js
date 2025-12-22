@@ -39,7 +39,7 @@ export const sendAppointmentConfirmation = async ({ to, patientName, doctorName,
 
   try {
     await transporter.sendMail({
-      from: `"MediConnect" <${process.env.EMAIL_USER}>`,
+      from: `"Medivara" <${process.env.EMAIL_USER}>`,
       to,
       subject: "Appointment Confirmation",
       html: `
