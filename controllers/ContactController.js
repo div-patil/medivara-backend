@@ -1,4 +1,4 @@
-const { sendContactEmail } = require("../utils/mailer");
+import {sendContactEmail} from "../utils/mailer.js";
 
 export const contact = async (req, res) => {
   try {
