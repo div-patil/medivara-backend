@@ -1,5 +1,8 @@
-import Router from "express";
-import { contact } from "../controllers/contactController.js";
-const router = Router();
-router.post("/contact-us", contact);
+const express = require("express");
+const router = express.Router();
+
+const { contact } = require("../controllers/contactController");
+
+router.post("/contact", contact);
+
 export default router;
