@@ -58,7 +58,7 @@ export const sendAppointmentConfirmation = async ({ to, patientName, doctorName,
 export const sendOtpEmail = async (to, otp) => {
   try {
     await transporter.sendMail({
-      from: `"MediConnect" <${process.env.EMAIL_USER}>`,
+      from: `"Medivara" <${process.env.EMAIL_USER}>`,
       to,
       subject: "Your OTP Code",
       html: `
